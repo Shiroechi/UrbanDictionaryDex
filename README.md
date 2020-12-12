@@ -18,8 +18,8 @@ var results = await client.SearchTerm("hentai");
 foreach(var item in results)
 {
     Console.WriteLine(item.DefId);
-				Console.WriteLine(item.Word);
-				Console.WriteLine(item.Definition);
-				Console.WriteLine();
+    Console.WriteLine(item.Word);
+    Console.WriteLine(item.Definition);
+    Console.WriteLine();
 }
 ```
