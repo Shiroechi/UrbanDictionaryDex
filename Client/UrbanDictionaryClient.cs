@@ -4,10 +4,10 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-using UrbanDictionary.Exceptions;
-using UrbanDictionary.Models;
+using UrbanDictionaryDex.Exceptions;
+using UrbanDictionaryDex.Models;
 
-namespace UrbanDictionary.Client
+namespace UrbanDictionaryDex.Client
 {
 	/// <summary>
 	/// API client for Urban Dictionary.

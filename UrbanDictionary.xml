@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>UrbanDictionary</name>
+        <name>UrbanDictionaryDex</name>
     </assembly>
     <members>
-        <member name="T:UrbanDictionary.Client.UrbanDictionaryClient">
+        <member name="T:UrbanDictionaryDex.Client.UrbanDictionaryClient">
             <summary>
             API client for Urban Dictionary.
             </summary>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.#ctor(System.Net.Http.HttpClient)">
             <summary>
             	Create client instance of Urban Dictionary.
             </summary>
@@ -17,12 +17,12 @@
             	Http client for sending and recieving response.
             </param>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.Finalize">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.Finalize">
             <summary>
-            	Release all resource that <see cref="T:UrbanDictionary.Client.UrbanDictionaryClient"/> create.
+            	Release all resource that <see cref="T:UrbanDictionaryDex.Client.UrbanDictionaryClient"/> create.
             </summary>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.GetJsonResponseAsync``1(System.String)">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.GetJsonResponseAsync``1(System.String)">
             <summary>
             	Get JSON response from url.
             </summary>
@@ -35,7 +35,7 @@
             <returns>
             	The instance of <typeparamref name="T"/> being deserialized.
             </returns>
-            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            <exception cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException">
             	Unexpected error occured.
             </exception>
             <exception cref="T:System.Net.Http.HttpRequestException">
@@ -49,19 +49,19 @@
             	The JSON is invalid.
             </exception>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.ReadDefinitionData(System.Text.Json.JsonElement)">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.ReadDefinitionData(System.Text.Json.JsonElement)">
             <summary>
             Read JSON data.
             </summary>
             <param name="item"></param>
             <returns></returns>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.AddHttpUserAgent">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.AddHttpUserAgent">
             <summary>
             Add http user agent if not exist.
             </summary>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.String)">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.SearchTerm(System.String)">
             <summary>
             	Get definitions based on Urban Dictionary terms.
             </summary>
@@ -69,12 +69,12 @@
             	The definition of term you want to know.
             </param>
             <returns>
-            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            	Array of <see cref="T:UrbanDictionaryDex.Models.DefinitionData"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">
             	The term is empty or null.
             </exception>
-            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            <exception cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException">
             	Unexpected error occured.
             </exception>
             <exception cref="T:System.Net.Http.HttpRequestException">
@@ -88,7 +88,7 @@
             	The JSON is invalid.
             </exception>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.String[])">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.SearchTerm(System.String[])">
             <summary>
             	Get definitions based on Urban Dictionary terms.
             </summary>
@@ -96,12 +96,12 @@
             	The definition of terms you want to know.
             </param>
             <returns>
-            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            	Array of <see cref="T:UrbanDictionaryDex.Models.DefinitionData"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">
             	The term is empty or null.
             </exception>
-            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            <exception cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException">
             	Unexpected error occured.
             </exception>
             <exception cref="T:System.Net.Http.HttpRequestException">
@@ -115,7 +115,7 @@
             	The JSON is invalid.
             </exception>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.UInt32)">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.SearchTerm(System.UInt32)">
             <summary>
             	Get definitions based on Urban Dictionary terms.
             </summary>
@@ -123,12 +123,12 @@
             	The definition id from Urban Dictionary.
             </param>
             <returns>
-            	A <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            	A <see cref="T:UrbanDictionaryDex.Models.DefinitionData"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">
             	The term is empty or null.
             </exception>
-            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            <exception cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException">
             	Unexpected error occured.
             </exception>
             <exception cref="T:System.Net.Http.HttpRequestException">
@@ -142,7 +142,7 @@
             	The JSON is invalid.
             </exception>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.UInt32[])">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.SearchTerm(System.UInt32[])">
             <summary>
             	Get definitions based on Urban Dictionary terms.
             </summary>
@@ -150,12 +150,12 @@
             	The definition id from Urban Dictionary.
             </param>
             <returns>
-            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            	Array of <see cref="T:UrbanDictionaryDex.Models.DefinitionData"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">
             	The term is empty or null.
             </exception>
-            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            <exception cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException">
             	Unexpected error occured.
             </exception>
             <exception cref="T:System.Net.Http.HttpRequestException">
@@ -169,13 +169,13 @@
             	The JSON is invalid.
             </exception>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.GetRandomTerm">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.GetRandomTerm">
             <summary>
             Get 10 random term definition from Urban Dictionary.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.AutoCompleteTerm(System.String)">
+        <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.AutoCompleteTerm(System.String)">
             <summary>
             	Get definitions based on Urban Dictionary terms.
             </summary>
@@ -183,12 +183,12 @@
             	The definition of term you want to know.
             </param>
             <returns>
-            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            	Array of <see cref="T:UrbanDictionaryDex.Models.DefinitionData"/>.
             </returns>
             <exception cref="T:System.ArgumentNullException">
             	The term is empty or null.
             </exception>
-            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            <exception cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException">
             	Unexpected error occured.
             </exception>
             <exception cref="T:System.Net.Http.HttpRequestException">
@@ -202,65 +202,65 @@
             	The JSON is invalid.
             </exception>
         </member>
-        <member name="T:UrbanDictionary.Exceptions.HttpResponseException">
+        <member name="T:UrbanDictionaryDex.Exceptions.HttpResponseException">
             <summary>
             Error that occur whenever <see cref="T:System.Net.Http.HttpResponseMessage"/> is not OK.
             </summary>
         </member>
-        <member name="M:UrbanDictionary.Exceptions.HttpResponseException.#ctor(System.String)">
+        <member name="M:UrbanDictionaryDex.Exceptions.HttpResponseException.#ctor(System.String)">
             <summary>
-            Create <see cref="T:UrbanDictionary.Exceptions.HttpResponseException"/>.
+            Create <see cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException"/>.
             </summary>
             <param name="msg">Error message.</param>
         </member>
-        <member name="M:UrbanDictionary.Exceptions.HttpResponseException.#ctor(System.String,System.Exception)">
+        <member name="M:UrbanDictionaryDex.Exceptions.HttpResponseException.#ctor(System.String,System.Exception)">
             <summary>
-            Create <see cref="T:UrbanDictionary.Exceptions.HttpResponseException"/>.
+            Create <see cref="T:UrbanDictionaryDex.Exceptions.HttpResponseException"/>.
             </summary>
             <param name="msg">Error message.</param>
             <param name="e">Exception.</param>
         </member>
-        <member name="T:UrbanDictionary.Models.DefinitionData">
+        <member name="T:UrbanDictionaryDex.Models.DefinitionData">
             <summary>
             Represent search result of term.
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.Definition">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.Definition">
             <summary>
             The definition.
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.Author">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.Author">
             <summary>
             The author. (His name)
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.Word">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.Word">
             <summary>
             The target word of the definition.
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.DefId">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.DefId">
             <summary>
             The definiton id of this definiton.
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.Example">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.Example">
             <summary>
             The example for the usage of this word following the definiton.
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.ThumbsDown">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.ThumbsDown">
             <summary>
             The numbers of thumbs down.
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.ThumbsUp">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.ThumbsUp">
             <summary>
             The number of thumbs up.
             </summary>
         </member>
-        <member name="P:UrbanDictionary.Models.DefinitionData.Permalink">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.Permalink">
             <summary>
             The permalink of the definition.
             </summary>

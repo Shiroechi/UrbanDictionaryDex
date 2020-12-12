@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UrbanDictionary.Exceptions
+namespace UrbanDictionaryDex.Exceptions
 {
 	public class DefinitioNotFound : Exception
 	{

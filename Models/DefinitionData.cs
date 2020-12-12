@@ -1,4 +1,4 @@
-﻿namespace UrbanDictionary.Models
+﻿namespace UrbanDictionaryDex.Models
 {
 	/// <summary>
 	/// Represent search result of term.
