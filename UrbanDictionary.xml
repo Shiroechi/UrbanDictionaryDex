@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UrbanDictionary</name>
+    </assembly>
+    <members>
+        <member name="T:UrbanDictionary.Client.UrbanDictionaryClient">
+            <summary>
+            API client for Urban Dictionary.
+            </summary>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            	Create client instance of Urban Dictionary.
+            </summary>
+            <param name="client">
+            	Http client for sending and recieving response.
+            </param>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.Finalize">
+            <summary>
+            	Release all resource that <see cref="T:UrbanDictionary.Client.UrbanDictionaryClient"/> create.
+            </summary>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.GetJsonResponseAsync``1(System.String)">
+            <summary>
+            	Get JSON response from url.
+            </summary>
+            <typeparam name="T">
+            	The type of the object to deserialize.
+            </typeparam>
+            <param name="url">
+            	API URL. 
+            </param>
+            <returns>
+            	The instance of <typeparamref name="T"/> being deserialized.
+            </returns>
+            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            	Unexpected error occured.
+            </exception>
+            <exception cref="T:System.Net.Http.HttpRequestException">
+            	The request failed due to an underlying issue such as network connectivity, DNS
+                failure, server certificate validation or timeout.
+            </exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
+            	The request failed due timeout.
+            </exception>
+            <exception cref="T:System.Text.Json.JsonException">
+            	The JSON is invalid.
+            </exception>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.ReadDefinitionData(System.Text.Json.JsonElement)">
+            <summary>
+            Read JSON data.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.AddHttpUserAgent">
+            <summary>
+            Add http user agent if not exist.
+            </summary>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.String)">
+            <summary>
+            	Get definitions based on Urban Dictionary terms.
+            </summary>
+            <param name="term">
+            	The definition of term you want to know.
+            </param>
+            <returns>
+            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	The term is empty or null.
+            </exception>
+            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            	Unexpected error occured.
+            </exception>
+            <exception cref="T:System.Net.Http.HttpRequestException">
+            	The request failed due to an underlying issue such as network connectivity, DNS
+                failure, server certificate validation or timeout.
+            </exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
+            	The request failed due timeout.
+            </exception>
+            <exception cref="T:System.Text.Json.JsonException">
+            	The JSON is invalid.
+            </exception>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.String[])">
+            <summary>
+            	Get definitions based on Urban Dictionary terms.
+            </summary>
+            <param name="terms">
+            	The definition of terms you want to know.
+            </param>
+            <returns>
+            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	The term is empty or null.
+            </exception>
+            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            	Unexpected error occured.
+            </exception>
+            <exception cref="T:System.Net.Http.HttpRequestException">
+            	The request failed due to an underlying issue such as network connectivity, DNS
+                failure, server certificate validation or timeout.
+            </exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
+            	The request failed due timeout.
+            </exception>
+            <exception cref="T:System.Text.Json.JsonException">
+            	The JSON is invalid.
+            </exception>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.UInt32)">
+            <summary>
+            	Get definitions based on Urban Dictionary terms.
+            </summary>
+            <param name="id">
+            	The definition id from Urban Dictionary.
+            </param>
+            <returns>
+            	A <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	The term is empty or null.
+            </exception>
+            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            	Unexpected error occured.
+            </exception>
+            <exception cref="T:System.Net.Http.HttpRequestException">
+            	The request failed due to an underlying issue such as network connectivity, DNS
+                failure, server certificate validation or timeout.
+            </exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
+            	The request failed due timeout.
+            </exception>
+            <exception cref="T:System.Text.Json.JsonException">
+            	The JSON is invalid.
+            </exception>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.SearchTerm(System.UInt32[])">
+            <summary>
+            	Get definitions based on Urban Dictionary terms.
+            </summary>
+            <param name="ids">
+            	The definition id from Urban Dictionary.
+            </param>
+            <returns>
+            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	The term is empty or null.
+            </exception>
+            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            	Unexpected error occured.
+            </exception>
+            <exception cref="T:System.Net.Http.HttpRequestException">
+            	The request failed due to an underlying issue such as network connectivity, DNS
+                failure, server certificate validation or timeout.
+            </exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
+            	The request failed due timeout.
+            </exception>
+            <exception cref="T:System.Text.Json.JsonException">
+            	The JSON is invalid.
+            </exception>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.GetRandomTerm">
+            <summary>
+            Get 10 random term definition from Urban Dictionary.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UrbanDictionary.Client.UrbanDictionaryClient.AutoCompleteTerm(System.String)">
+            <summary>
+            	Get definitions based on Urban Dictionary terms.
+            </summary>
+            <param name="term">
+            	The definition of term you want to know.
+            </param>
+            <returns>
+            	Array of <see cref="T:UrbanDictionary.Models.DefinitionData"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	The term is empty or null.
+            </exception>
+            <exception cref="T:UrbanDictionary.Exceptions.HttpResponseException">
+            	Unexpected error occured.
+            </exception>
+            <exception cref="T:System.Net.Http.HttpRequestException">
+            	The request failed due to an underlying issue such as network connectivity, DNS
+                failure, server certificate validation or timeout.
+            </exception>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
+            	The request failed due timeout.
+            </exception>
+            <exception cref="T:System.Text.Json.JsonException">
+            	The JSON is invalid.
+            </exception>
+        </member>
+        <member name="T:UrbanDictionary.Exceptions.HttpResponseException">
+            <summary>
+            Error that occur whenever <see cref="T:System.Net.Http.HttpResponseMessage"/> is not OK.
+            </summary>
+        </member>
+        <member name="M:UrbanDictionary.Exceptions.HttpResponseException.#ctor(System.String)">
+            <summary>
+            Create <see cref="T:UrbanDictionary.Exceptions.HttpResponseException"/>.
+            </summary>
+            <param name="msg">Error message.</param>
+        </member>
+        <member name="M:UrbanDictionary.Exceptions.HttpResponseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Create <see cref="T:UrbanDictionary.Exceptions.HttpResponseException"/>.
+            </summary>
+            <param name="msg">Error message.</param>
+            <param name="e">Exception.</param>
+        </member>
+        <member name="T:UrbanDictionary.Models.DefinitionData">
+            <summary>
+            Represent search result of term.
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.Definition">
+            <summary>
+            The definition.
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.Author">
+            <summary>
+            The author. (His name)
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.Word">
+            <summary>
+            The target word of the definition.
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.DefId">
+            <summary>
+            The definiton id of this definiton.
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.Example">
+            <summary>
+            The example for the usage of this word following the definiton.
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.ThumbsDown">
+            <summary>
+            The numbers of thumbs down.
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.ThumbsUp">
+            <summary>
+            The number of thumbs up.
+            </summary>
+        </member>
+        <member name="P:UrbanDictionary.Models.DefinitionData.Permalink">
+            <summary>
+            The permalink of the definition.
+            </summary>
+        </member>
+    </members>
+</doc>
