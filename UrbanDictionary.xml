@@ -42,9 +42,6 @@
             	The request failed due to an underlying issue such as network connectivity, DNS
                 failure, server certificate validation or timeout.
             </exception>
-            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
-            	The request failed due timeout.
-            </exception>
             <exception cref="T:System.Text.Json.JsonException">
             	The JSON is invalid.
             </exception>
@@ -81,9 +78,6 @@
             	The request failed due to an underlying issue such as network connectivity, DNS
                 failure, server certificate validation or timeout.
             </exception>
-            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
-            	The request failed due timeout.
-            </exception>
             <exception cref="T:System.Text.Json.JsonException">
             	The JSON is invalid.
             </exception>
@@ -92,6 +86,10 @@
             <summary>
             	Get definitions based on Urban Dictionary terms.
             </summary>
+            <remarks>
+            	If the term is not found, it will continue to get the next term
+            	and not throw a exception.
+            </remarks>
             <param name="terms">
             	The definition of terms you want to know.
             </param>
@@ -107,9 +105,6 @@
             <exception cref="T:System.Net.Http.HttpRequestException">
             	The request failed due to an underlying issue such as network connectivity, DNS
                 failure, server certificate validation or timeout.
-            </exception>
-            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
-            	The request failed due timeout.
             </exception>
             <exception cref="T:System.Text.Json.JsonException">
             	The JSON is invalid.
@@ -135,9 +130,6 @@
             	The request failed due to an underlying issue such as network connectivity, DNS
                 failure, server certificate validation or timeout.
             </exception>
-            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
-            	The request failed due timeout.
-            </exception>
             <exception cref="T:System.Text.Json.JsonException">
             	The JSON is invalid.
             </exception>
@@ -146,6 +138,10 @@
             <summary>
             	Get definitions based on Urban Dictionary terms.
             </summary>
+            <remarks>
+            	If the ids is not found, it will continue to get the next ids
+            	and not throw a exception.
+            </remarks>
             <param name="ids">
             	The definition id from Urban Dictionary.
             </param>
@@ -162,18 +158,17 @@
             	The request failed due to an underlying issue such as network connectivity, DNS
                 failure, server certificate validation or timeout.
             </exception>
-            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
-            	The request failed due timeout.
-            </exception>
             <exception cref="T:System.Text.Json.JsonException">
             	The JSON is invalid.
             </exception>
         </member>
         <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.GetRandomTerm">
             <summary>
-            Get 10 random term definition from Urban Dictionary.
+            	Get 10 random term definition from Urban Dictionary.
             </summary>
-            <returns></returns>
+            <returns>
+            	Array of <see cref="T:UrbanDictionaryDex.Models.DefinitionData"/>.
+            </returns>
         </member>
         <member name="M:UrbanDictionaryDex.Client.UrbanDictionaryClient.AutoCompleteTerm(System.String)">
             <summary>
@@ -194,9 +189,6 @@
             <exception cref="T:System.Net.Http.HttpRequestException">
             	The request failed due to an underlying issue such as network connectivity, DNS
                 failure, server certificate validation or timeout.
-            </exception>
-            <exception cref="T:System.Threading.Tasks.TaskCanceledException">
-            	The request failed due timeout.
             </exception>
             <exception cref="T:System.Text.Json.JsonException">
             	The JSON is invalid.
@@ -232,7 +224,7 @@
         </member>
         <member name="P:UrbanDictionaryDex.Models.DefinitionData.Author">
             <summary>
-            The author. (His name)
+            The author.
             </summary>
         </member>
         <member name="P:UrbanDictionaryDex.Models.DefinitionData.Word">
@@ -240,7 +232,7 @@
             The target word of the definition.
             </summary>
         </member>
-        <member name="P:UrbanDictionaryDex.Models.DefinitionData.DefId">
+        <member name="P:UrbanDictionaryDex.Models.DefinitionData.Id">
             <summary>
             The definiton id of this definiton.
             </summary>
