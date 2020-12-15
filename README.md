@@ -1,10 +1,13 @@
 # UrbanDictionary
- API wrapper for urbandictionary.com
+
+ API wrapper for [Urban Dictionary](https://urbandictionary.com/).
 
 # Download
+
 - [Nuget](https://www.nuget.org/packages/UrbanDictionaryDex/)
 
 # Feature
+
 - Search a definition of term(s).
 - Search a definition from Urban Dictionary id(s).
 - Get auto complete word from Urban Dictionary.
