@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -45,6 +46,12 @@ namespace UrbanDictionaryDex.Client
 			}
 
 			this.AddHttpUserAgent();
+
+			ServicePointManager.SecurityProtocol = 
+				SecurityProtocolType.Tls12 | 
+				SecurityProtocolType.Tls11 | 
+				SecurityProtocolType.Tls | 
+				SecurityProtocolType.Ssl3;
 		}
 
 		/// <summary>
