@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace UrbanDictionaryDex.Client
 	{
 		#region Member
 
-		private readonly HttpClient _HttpClient;
+		private HttpClient _HttpClient;
 		private readonly bool _Supplied;
 
 		private readonly string _ApiBaseUrl = "https://api.urbandictionary.com/v0/";
@@ -81,9 +82,6 @@ namespace UrbanDictionaryDex.Client
 		///		The request failed due to an underlying issue such as network connectivity, DNS
 		///     failure, server certificate validation or timeout.
 		/// </exception>
-		/// <exception cref="TaskCanceledException">
-		///		The request failed due timeout.
-		/// </exception>
 		/// <exception cref="JsonException">
 		///		The JSON is invalid.
 		/// </exception>
@@ -101,9 +99,9 @@ namespace UrbanDictionaryDex.Client
 						{
 							return await JsonSerializer.DeserializeAsync<T>(stream);
 						}
-						catch (JsonException e)
+						catch (JsonException)
 						{
-							throw e;
+							throw;
 						}
 					}
 
@@ -111,13 +109,9 @@ namespace UrbanDictionaryDex.Client
 						$"Unexpected error occured.\n Status code = { (int)response.StatusCode }\n Reason = { response.ReasonPhrase }.");
 				}
 			}
-			catch (HttpRequestException e)
+			catch (HttpRequestException)
 			{
-				throw e;
-			}
-			catch (TaskCanceledException e)
-			{
-				throw e;
+				throw;
 			}
 		}
 
@@ -175,9 +169,6 @@ namespace UrbanDictionaryDex.Client
 		///		The request failed due to an underlying issue such as network connectivity, DNS
 		///     failure, server certificate validation or timeout.
 		/// </exception>
-		/// <exception cref="TaskCanceledException">
-		///		The request failed due timeout.
-		/// </exception>
 		/// <exception cref="JsonException">
 		///		The JSON is invalid.
 		/// </exception>
@@ -192,7 +183,7 @@ namespace UrbanDictionaryDex.Client
 			
 			JsonElement array;
 
-			List<DefinitionData> definitions = new List<DefinitionData>();
+			var definitions = new List<DefinitionData>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
@@ -215,6 +206,10 @@ namespace UrbanDictionaryDex.Client
 		/// <summary>
 		///		Get definitions based on Urban Dictionary terms.
 		/// </summary>
+		/// <remarks>
+		///		If the term is not found, it will continue to get the next term
+		///		and not throw a exception.
+		/// </remarks>
 		/// <param name="terms">
 		///		The definition of terms you want to know.
 		///	</param>
@@ -231,9 +226,6 @@ namespace UrbanDictionaryDex.Client
 		///		The request failed due to an underlying issue such as network connectivity, DNS
 		///     failure, server certificate validation or timeout.
 		/// </exception>
-		/// <exception cref="TaskCanceledException">
-		///		The request failed due timeout.
-		/// </exception>
 		/// <exception cref="JsonException">
 		///		The JSON is invalid.
 		/// </exception>
@@ -244,7 +236,7 @@ namespace UrbanDictionaryDex.Client
 				throw new ArgumentNullException(nameof(terms), "The term to search can't empty or null.");
 			}
 
-			List<DefinitionData> definitions = new List<DefinitionData>();
+			var definitions = new List<DefinitionData>();
 
 			JsonElement array;
 
@@ -292,9 +284,6 @@ namespace UrbanDictionaryDex.Client
 		///		The request failed due to an underlying issue such as network connectivity, DNS
 		///     failure, server certificate validation or timeout.
 		/// </exception>
-		/// <exception cref="TaskCanceledException">
-		///		The request failed due timeout.
-		/// </exception>
 		/// <exception cref="JsonException">
 		///		The JSON is invalid.
 		/// </exception>
@@ -325,6 +314,10 @@ namespace UrbanDictionaryDex.Client
 		/// <summary>
 		///		Get definitions based on Urban Dictionary terms.
 		/// </summary>
+		/// <remarks>
+		///		If the ids is not found, it will continue to get the next ids
+		///		and not throw a exception.
+		/// </remarks>
 		/// <param name="ids">
 		///		The definition id from Urban Dictionary.
 		///	</param>
@@ -341,9 +334,6 @@ namespace UrbanDictionaryDex.Client
 		///		The request failed due to an underlying issue such as network connectivity, DNS
 		///     failure, server certificate validation or timeout.
 		/// </exception>
-		/// <exception cref="TaskCanceledException">
-		///		The request failed due timeout.
-		/// </exception>
 		/// <exception cref="JsonException">
 		///		The JSON is invalid.
 		/// </exception>
@@ -354,7 +344,7 @@ namespace UrbanDictionaryDex.Client
 				throw new ArgumentNullException(nameof(ids), "The id's to search can't empty or null.");
 			}
 
-			List<DefinitionData> definitions = new List<DefinitionData>();
+			var definitions = new List<DefinitionData>();
 
 			JsonElement array;
 
@@ -384,16 +374,18 @@ namespace UrbanDictionaryDex.Client
 		}
 
 		/// <summary>
-		/// Get 10 random term definition from Urban Dictionary.
+		///		Get 10 random term definition from Urban Dictionary.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>
+		///		Array of <see cref="DefinitionData"/>.
+		/// </returns>
 		public async Task<DefinitionData[]> GetRandomTerm()
 		{
 			var query = $"{ this._ApiBaseUrl }random";
 
 			JsonElement array;
 
-			List<DefinitionData> definitions = new List<DefinitionData>();
+			var definitions = new List<DefinitionData>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
@@ -427,9 +419,6 @@ namespace UrbanDictionaryDex.Client
 		///		The request failed due to an underlying issue such as network connectivity, DNS
 		///     failure, server certificate validation or timeout.
 		/// </exception>
-		/// <exception cref="TaskCanceledException">
-		///		The request failed due timeout.
-		/// </exception>
 		/// <exception cref="JsonException">
 		///		The JSON is invalid.
 		/// </exception>
@@ -444,7 +433,7 @@ namespace UrbanDictionaryDex.Client
 
 			JsonElement array;
 
-			List<string> words = new List<string>();
+			var words = new List<string>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
