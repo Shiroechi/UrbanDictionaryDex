@@ -1,4 +1,6 @@
-﻿namespace UrbanDictionaryDex.Models
+﻿using System.Text.Json.Serialization;
+
+namespace UrbanDictionaryDex.Models
 {
 	/// <summary>
 	/// Represent search result of term.
@@ -6,7 +8,7 @@
 	public readonly struct DefinitionData
 	{
 		public DefinitionData(
-			uint defId,
+			uint id,
 			string word,
 			string author,
 			string definition, 
@@ -15,7 +17,7 @@
 			int thumbsUp, 
 			int thumbsDown)
 		{
-			this.DefId = defId;
+			this.Id = id;
 			this.Word = word;
 			this.Author = author;
 			this.Definition = definition;
@@ -28,41 +30,49 @@
 		/// <summary>
 		/// The definition.
 		/// </summary>
+		[JsonPropertyName("definition")]
 		public string Definition { get; }
 
 		/// <summary>
-		/// The author. (His name)
+		/// The author.
 		/// </summary>
+		[JsonPropertyName("author")]
 		public string Author { get; }
 
 		/// <summary>
 		/// The target word of the definition.
 		/// </summary>
+		[JsonPropertyName("word")]
 		public string Word { get; }
 
 		/// <summary>
 		/// The definiton id of this definiton.
 		/// </summary>
-		public uint DefId { get; }
+		[JsonPropertyName("defid")]
+		public uint Id { get; }
 
 		/// <summary>
 		/// The example for the usage of this word following the definiton.
 		/// </summary>
+		[JsonPropertyName("example")]
 		public string Example { get; }
 
 		/// <summary>
 		/// The numbers of thumbs down.
 		/// </summary>
+		[JsonPropertyName("thumbs_down")]
 		public int ThumbsDown { get; }
 
 		/// <summary>
 		/// The number of thumbs up.
 		/// </summary>
+		[JsonPropertyName("thumbs_up")]
 		public int ThumbsUp { get; }
 
 		/// <summary>
 		/// The permalink of the definition.
 		/// </summary>
+		[JsonPropertyName("permalink")]
 		public string Permalink { get; }
 	}
 }
