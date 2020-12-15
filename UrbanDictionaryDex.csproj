@@ -14,6 +14,8 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <PackageProjectUrl>https://github.com/Shiroechi/UrbanDictionary</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Shiroechi/UrbanDictionary</RepositoryUrl>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
