@@ -1,4 +1,4 @@
-# UrbanDictionary
+# UrbanDictionaryDex
 
  API wrapper for [Urban Dictionary](https://urbandictionary.com/).
  
