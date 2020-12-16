@@ -425,26 +425,24 @@ namespace UrbanDictionaryDex.Client
 
 			var query = $"{ this._ApiBaseUrl }autocomplete?term={ term }";
 
-			JsonElement array;
-
 			var words = new List<string>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				array = obj.RootElement.Clone();
-			}
+				var array = obj.RootElement.Clone();
 
-			if (array.GetArrayLength() == 0)
-			{
-				throw new DefinitioNotFound($"The \"{ term }\" term have no auto complete.");
-			}
+				if (array.GetArrayLength() == 0)
+				{
+					throw new DefinitioNotFound($"The \"{ term }\" term have no auto complete.");
+				}
 
-			foreach (var item in array.EnumerateArray())
-			{
-				words.Add(item.GetString());
-			}
+				foreach (var item in array.EnumerateArray())
+				{
+					words.Add(item.GetString());
+				}
 
-			return words.ToArray();
+				return words.ToArray();
+			}
 		}
 
 		#endregion Public Method
