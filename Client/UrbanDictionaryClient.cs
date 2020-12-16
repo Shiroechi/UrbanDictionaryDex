@@ -236,6 +236,8 @@ namespace UrbanDictionaryDex.Client
 
 			var definitions = new List<DefinitionData>();
 
+			JsonElement array;
+
 			string query;
 
 			foreach (var term in terms)
@@ -244,7 +246,7 @@ namespace UrbanDictionaryDex.Client
 
 				using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 				{
-					var array = obj.RootElement.GetProperty("list");
+					array = obj.RootElement.GetProperty("list");
 
 					if (array.GetArrayLength() == 0)
 					{
@@ -350,17 +352,17 @@ namespace UrbanDictionaryDex.Client
 
 				using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 				{
-					array = obj.RootElement.GetProperty("list").Clone();
-				}
+					array = obj.RootElement.GetProperty("list");
+					
+					if (array.GetArrayLength() == 0)
+					{
+						continue;
+					}
 
-				if (array.GetArrayLength() == 0)
-				{
-					continue;
-				}
-
-				foreach (var item in array.EnumerateArray())
-				{
-					definitions.Add(this.ReadDefinitionData(item));
+					foreach (var item in array.EnumerateArray())
+					{
+						definitions.Add(this.ReadDefinitionData(item));
+					}
 				}
 			}
 
