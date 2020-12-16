@@ -379,21 +379,19 @@ namespace UrbanDictionaryDex.Client
 		{
 			var query = $"{ this._ApiBaseUrl }random";
 
-			JsonElement array;
-
 			var definitions = new List<DefinitionData>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				array = obj.RootElement.GetProperty("list").Clone();
-			}
+				var array = obj.RootElement.GetProperty("list");
 
-			foreach (var item in array.EnumerateArray())
-			{
-				definitions.Add(this.ReadDefinitionData(item));
-			}
+				foreach (var item in array.EnumerateArray())
+				{
+					definitions.Add(this.ReadDefinitionData(item));
+				}
 
-			return definitions.ToArray();
+				return definitions.ToArray();
+			}
 		}
 
 		/// <summary>
