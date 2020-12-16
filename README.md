@@ -30,3 +30,60 @@ foreach(var item in results)
     Console.WriteLine();
 }
 ```
+
+## Search a definition of multiple term or word at once
+
+```C#
+var client = new UrbanDictionaryClient();
+var results = await client.SearchTerm(new string[] { "hentai", "anime" });
+foreach(var item in results)
+{
+    Console.WriteLine(item.DefId);
+    Console.WriteLine(item.Word);
+    Console.WriteLine(item.Definition);
+    Console.WriteLine();
+}
+```
+
+## Get a definition from id
+
+```C#
+var client = new UrbanDictionaryClient();
+var results = await client.SearchTerm(13675580);
+foreach(var item in results)
+{
+    Console.WriteLine(item.DefId);
+    Console.WriteLine(item.Word);
+    Console.WriteLine(item.Definition);
+    Console.WriteLine();
+}
+```
+
+## Get a definition from multiple id at once
+
+```C#
+var client = new UrbanDictionaryClient();
+var results = await client.SearchTerm(new uint[] { 13675580, 13675581 });
+foreach(var item in results)
+{
+    Console.WriteLine(item.DefId);
+    Console.WriteLine(item.Word);
+    Console.WriteLine(item.Definition);
+    Console.WriteLine();
+}
+```
+
+## Get random definition
+
+```C#
+var client = new UrbanDictionaryClient();
+var results = await client.GetRandomTerm();
+foreach(var item in results)
+{
+    Console.WriteLine(item.DefId);
+    Console.WriteLine(item.Word);
+    Console.WriteLine(item.Definition);
+    Console.WriteLine();
+}
+```
+
