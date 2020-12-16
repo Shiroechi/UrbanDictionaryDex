@@ -1,10 +1,12 @@
 # UrbanDictionary
 
  API wrapper for [Urban Dictionary](https://urbandictionary.com/).
-
+ 
+ [![CodeFactor](https://www.codefactor.io/repository/github/shiroechi/urbandictionarydex/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/shiroechi/urbandictionarydex)
+ 
 # Download
 
-- [Nuget](https://www.nuget.org/packages/UrbanDictionaryDex/)
+[![Nuget](https://img.shields.io/nuget/v/UrbanDictionaryDex?style=for-the-badge)](https://www.nuget.org/packages/UrbanDictionaryDex/)
 
 # Feature
 
@@ -14,6 +16,8 @@
 - Get a random definitions.
 
 # Example
+
+## Search a definition of term or word
 
 ```C#
 var client = new UrbanDictionaryClient();
