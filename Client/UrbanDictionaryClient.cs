@@ -185,7 +185,7 @@ namespace UrbanDictionaryDex.Client
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				var array = obj.RootElement.GetProperty("list").Clone();
+				var array = obj.RootElement.GetProperty("list");
 
 				if (array.GetArrayLength() == 0)
 				{
@@ -287,21 +287,19 @@ namespace UrbanDictionaryDex.Client
 		{
 			var query = $"{ this._ApiBaseUrl }define?defid={ id }";
 
-			JsonElement array;
-
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				array = obj.RootElement.GetProperty("list").Clone();
-			}
+				var array = obj.RootElement.GetProperty("list");
 
-			if (array.GetArrayLength() == 0)
-			{
-				throw new DefinitioNotFound($"There's no definition with id \"{ id }\".");
-			}
+				if (array.GetArrayLength() == 0)
+				{
+					throw new DefinitioNotFound($"There's no definition with id \"{ id }\".");
+				}
 
-			foreach (var item in array.EnumerateArray())
-			{
-				return this.ReadDefinitionData(item);
+				foreach (var item in array.EnumerateArray())
+				{
+					return this.ReadDefinitionData(item);
+				}
 			}
 
 			throw new DefinitioNotFound("Unexpected error occured.");
