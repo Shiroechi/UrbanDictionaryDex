@@ -46,12 +46,6 @@ namespace UrbanDictionaryDex.Client
 			}
 
 			this.AddHttpUserAgent();
-
-			ServicePointManager.SecurityProtocol = 
-				SecurityProtocolType.Tls12 | 
-				SecurityProtocolType.Tls11 | 
-				SecurityProtocolType.Tls | 
-				SecurityProtocolType.Ssl3;
 		}
 
 		/// <summary>
@@ -187,26 +181,24 @@ namespace UrbanDictionaryDex.Client
 
 			var query = $"{ this._ApiBaseUrl }define?term={ term }";
 			
-			JsonElement array;
-
 			var definitions = new List<DefinitionData>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				array = obj.RootElement.GetProperty("list").Clone();
-			}
+				var array = obj.RootElement.GetProperty("list");
 
-			if (array.GetArrayLength() == 0)
-			{
-				throw new DefinitioNotFound($"The \"{ term }\" term definition is not found.");
-			}
+				if (array.GetArrayLength() == 0)
+				{
+					throw new DefinitioNotFound($"The \"{ term }\" term definition is not found.");
+				}
 
-			foreach (var item in array.EnumerateArray())
-			{
-				definitions.Add(this.ReadDefinitionData(item));
-			}
+				foreach (var item in array.EnumerateArray())
+				{
+					definitions.Add(this.ReadDefinitionData(item));
+				}
 
-			return definitions.ToArray();
+				return definitions.ToArray();
+			}
 		}
 
 		/// <summary>
@@ -254,17 +246,17 @@ namespace UrbanDictionaryDex.Client
 
 				using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 				{
-					array = obj.RootElement.GetProperty("list").Clone();
-				}
+					array = obj.RootElement.GetProperty("list");
 
-				if (array.GetArrayLength() == 0)
-				{
-					continue;
-				}
+					if (array.GetArrayLength() == 0)
+					{
+						continue;
+					}
 
-				foreach (var item in array.EnumerateArray())
-				{
-					definitions.Add(this.ReadDefinitionData(item));
+					foreach (var item in array.EnumerateArray())
+					{
+						definitions.Add(this.ReadDefinitionData(item));
+					}
 				}
 			}
 
@@ -297,21 +289,19 @@ namespace UrbanDictionaryDex.Client
 		{
 			var query = $"{ this._ApiBaseUrl }define?defid={ id }";
 
-			JsonElement array;
-
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				array = obj.RootElement.GetProperty("list").Clone();
-			}
+				var array = obj.RootElement.GetProperty("list");
 
-			if (array.GetArrayLength() == 0)
-			{
-				throw new DefinitioNotFound($"There's no definition with id \"{ id }\".");
-			}
+				if (array.GetArrayLength() == 0)
+				{
+					throw new DefinitioNotFound($"There's no definition with id \"{ id }\".");
+				}
 
-			foreach (var item in array.EnumerateArray())
-			{
-				return this.ReadDefinitionData(item);
+				foreach (var item in array.EnumerateArray())
+				{
+					return this.ReadDefinitionData(item);
+				}
 			}
 
 			throw new DefinitioNotFound("Unexpected error occured.");
@@ -362,17 +352,17 @@ namespace UrbanDictionaryDex.Client
 
 				using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 				{
-					array = obj.RootElement.GetProperty("list").Clone();
-				}
+					array = obj.RootElement.GetProperty("list");
+					
+					if (array.GetArrayLength() == 0)
+					{
+						continue;
+					}
 
-				if (array.GetArrayLength() == 0)
-				{
-					continue;
-				}
-
-				foreach (var item in array.EnumerateArray())
-				{
-					definitions.Add(this.ReadDefinitionData(item));
+					foreach (var item in array.EnumerateArray())
+					{
+						definitions.Add(this.ReadDefinitionData(item));
+					}
 				}
 			}
 
@@ -389,21 +379,19 @@ namespace UrbanDictionaryDex.Client
 		{
 			var query = $"{ this._ApiBaseUrl }random";
 
-			JsonElement array;
-
 			var definitions = new List<DefinitionData>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				array = obj.RootElement.GetProperty("list").Clone();
-			}
+				var array = obj.RootElement.GetProperty("list");
 
-			foreach (var item in array.EnumerateArray())
-			{
-				definitions.Add(this.ReadDefinitionData(item));
-			}
+				foreach (var item in array.EnumerateArray())
+				{
+					definitions.Add(this.ReadDefinitionData(item));
+				}
 
-			return definitions.ToArray();
+				return definitions.ToArray();
+			}
 		}
 
 		/// <summary>
@@ -437,26 +425,24 @@ namespace UrbanDictionaryDex.Client
 
 			var query = $"{ this._ApiBaseUrl }autocomplete?term={ term }";
 
-			JsonElement array;
-
 			var words = new List<string>();
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				array = obj.RootElement.Clone();
-			}
+				var array = obj.RootElement.Clone();
 
-			if (array.GetArrayLength() == 0)
-			{
-				throw new DefinitioNotFound($"The \"{ term }\" term have no auto complete.");
-			}
+				if (array.GetArrayLength() == 0)
+				{
+					throw new DefinitioNotFound($"The \"{ term }\" term have no auto complete.");
+				}
 
-			foreach (var item in array.EnumerateArray())
-			{
-				words.Add(item.GetString());
-			}
+				foreach (var item in array.EnumerateArray())
+				{
+					words.Add(item.GetString());
+				}
 
-			return words.ToArray();
+				return words.ToArray();
+			}
 		}
 
 		#endregion Public Method
