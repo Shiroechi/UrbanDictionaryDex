@@ -14,8 +14,8 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <PackageProjectUrl>https://github.com/Shiroechi/UrbanDictionary</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Shiroechi/UrbanDictionary</RepositoryUrl>
-    <Version>1.0.2</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,6 +25,8 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>D:\Project\C#\API\UrbanDictionary\UrbanDictionary.xml</DocumentationFile>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
