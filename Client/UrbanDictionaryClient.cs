@@ -428,7 +428,7 @@ namespace UrbanDictionaryDex.Client
 
 			using (var obj = await this.GetJsonResponseAsync<JsonDocument>(query))
 			{
-				var array = obj.RootElement.Clone();
+				var array = obj.RootElement;
 
 				if (array.GetArrayLength() == 0)
 				{
