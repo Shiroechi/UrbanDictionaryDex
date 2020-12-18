@@ -20,11 +20,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>true</Optimize>
-    <DocumentationFile>D:\Project\C#\API\UrbanDictionary\UrbanDictionary.xml</DocumentationFile>
+    <DocumentationFile>D:\Project\C#\API\UrbanDictionary\UrbanDictionaryDex.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>D:\Project\C#\API\UrbanDictionary\UrbanDictionary.xml</DocumentationFile>
+    <DocumentationFile>D:\Project\C#\API\UrbanDictionary\UrbanDictionaryDex.xml</DocumentationFile>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
